@@ -20,8 +20,8 @@ class CreateReservationsTable extends Migration
             $table->integer('line_id')->unsigned();
             $table->integer('start')->unsigned();
             $table->integer('end')->unsigned();
-            $table->integer('ticket_id')->unsigned();
-            $table->integer('available');
+            $table->integer('ticket_id')->unsigned()->nullable();
+            $table->integer('available')->default(0);
             $table->timestamps();
             $table->foreign('seat_id')->references('id')->on('seats');
             $table->foreign('line_id')->references('id')->on('lines');

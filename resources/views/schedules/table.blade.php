@@ -5,7 +5,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Bus Id</th>
-                <th>Trip Id</th>
+                <th>Trip</th>
                 <th>Date</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -16,7 +16,7 @@
                     <td>{{ $schedule->id }}</td>
                     <td>{{ $schedule->name }}</td>
                     <td>{{ $schedule->bus_id }}</td>
-                    <td>{{ $schedule->trip_id }}</td>
+                    <td>{{ $schedule->trip->name }}</td>
                     <td>{{ $schedule->date }}</td>
                     <td width="120">
                         {!! Form::open(['route' => ['schedules.destroy', $schedule->id], 'method' => 'delete']) !!}

@@ -23,7 +23,7 @@ class schedule extends Model
 
 
     public $table = 'schedules';
-    
+
 
 
 

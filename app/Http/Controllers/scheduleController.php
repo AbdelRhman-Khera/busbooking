@@ -6,6 +6,8 @@ use App\Http\Requests\CreatescheduleRequest;
 use App\Http\Requests\UpdatescheduleRequest;
 use App\Repositories\scheduleRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Bus;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +44,9 @@ class scheduleController extends AppBaseController
      */
     public function create()
     {
-        return view('schedules.create');
+        $trips = Trip::all();
+        $buses = Bus::all();
+        return view('schedules.create',compact('trips','buses'));
     }
 
     /**
@@ -54,9 +58,9 @@ class scheduleController extends AppBaseController
      */
     public function store(CreatescheduleRequest $request)
     {
-        $input = $request->all();
 
-        $schedule = $this->scheduleRepository->create($input);
+
+        $schedule = $this->scheduleRepository->createschedule($request);
 
         Flash::success('Schedule saved successfully.');
 
@@ -92,6 +96,8 @@ class scheduleController extends AppBaseController
      */
     public function edit($id)
     {
+        $trips = Trip::all();
+        $buses = Bus::all();
         $schedule = $this->scheduleRepository->find($id);
 
         if (empty($schedule)) {
@@ -100,7 +106,7 @@ class scheduleController extends AppBaseController
             return redirect(route('schedules.index'));
         }
 
-        return view('schedules.edit')->with('schedule', $schedule);
+        return view('schedules.edit',compact('trips','buses'))->with('schedule', $schedule);
     }
 
     /**

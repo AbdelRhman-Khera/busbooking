@@ -18,14 +18,22 @@
 
 <!-- Trip Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('trip_id', 'Trip Id:') !!}
-    <p>{{ $schedule->trip_id }}</p>
+    {!! Form::label('trip_id', 'Trip:') !!}
+    <p>{{ $schedule->trip->name }}</p>
 </div>
 
 <!-- Date Field -->
 <div class="col-sm-12">
     {!! Form::label('date', 'Date:') !!}
     <p>{{ $schedule->date }}</p>
+</div>
+
+<!-- Tickets -->
+<div class="col-sm-12">
+    {!! Form::label('tickets', 'Tickets:') !!}
+    {{-- @foreach ($trip->lines as $index=>$item)
+    <p>{{ $index+1 }}- From {{ $item->starts->name }} To {{ $item->ends->name }}</p>
+    @endforeach --}}
 </div>
 
 <!-- Created At Field -->
