@@ -7,19 +7,19 @@
 <!-- Start Field -->
 <div class="col-sm-12">
     {!! Form::label('start', 'Start:') !!}
-    <p>{{ $line->start }}</p>
+    <p>{{ $line->starts->name }}</p>
 </div>
 
 <!-- End Field -->
 <div class="col-sm-12">
     {!! Form::label('end', 'End:') !!}
-    <p>{{ $line->end }}</p>
+    <p>{{ $line->ends->name }}</p>
 </div>
 
 <!-- Trip Id Field -->
 <div class="col-sm-12">
     {!! Form::label('trip_id', 'Trip Id:') !!}
-    <p>{{ $line->trip_id }}</p>
+    <p>{{ $line->trips->name }}</p>
 </div>
 
 <!-- Created At Field -->

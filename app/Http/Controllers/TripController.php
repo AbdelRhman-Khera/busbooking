@@ -6,6 +6,7 @@ use App\Http\Requests\CreateTripRequest;
 use App\Http\Requests\UpdateTripRequest;
 use App\Repositories\TripRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Station;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +43,8 @@ class TripController extends AppBaseController
      */
     public function create()
     {
-        return view('trips.create');
+        $stations = Station::all();
+        return view('trips.create',compact('stations'));
     }
 
     /**
@@ -54,9 +56,10 @@ class TripController extends AppBaseController
      */
     public function store(CreateTripRequest $request)
     {
-        $input = $request->all();
 
-        $trip = $this->tripRepository->create($input);
+
+
+        $trip = $this->tripRepository->createtrip($request);
 
         Flash::success('Trip saved successfully.');
 
@@ -93,6 +96,7 @@ class TripController extends AppBaseController
     public function edit($id)
     {
         $trip = $this->tripRepository->find($id);
+        $stations = Station::all();
 
         if (empty($trip)) {
             Flash::error('Trip not found');
@@ -100,7 +104,7 @@ class TripController extends AppBaseController
             return redirect(route('trips.index'));
         }
 
-        return view('trips.edit')->with('trip', $trip);
+        return view('trips.edit',compact('stations'))->with('trip', $trip);
     }
 
     /**

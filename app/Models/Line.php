@@ -5,27 +5,14 @@ namespace App\Models;
 use Eloquent as Model;
 
 
-
-/**
- * Class Line
- * @package App\Models
- * @version June 26, 2021, 2:53 pm UTC
- *
- * @property \App\Models\Station $start
- * @property \App\Models\Station $end
- * @property \App\Models\Trip $trip
- * @property integer $start
- * @property integer $end
- * @property integer $trip_id
- */
 class Line extends Model
 {
 
 
     public $table = 'lines';
-    
 
 
+    protected $with=['starts','ends'];
 
     public $fillable = [
         'start',
@@ -51,6 +38,7 @@ class Line extends Model
      * @var array
      */
     public static $rules = [
+        'trip_id' => 'required',
         'start' => 'required',
         'end' => 'required'
     ];
@@ -58,7 +46,7 @@ class Line extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function start()
+    public function starts()
     {
         return $this->belongsTo(\App\Models\Station::class, 'start', 'id');
     }
@@ -66,7 +54,7 @@ class Line extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function end()
+    public function ends()
     {
         return $this->belongsTo(\App\Models\Station::class, 'end', 'id');
     }
@@ -74,7 +62,7 @@ class Line extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function trip()
+    public function trips()
     {
         return $this->belongsTo(\App\Models\Trip::class, 'trip_id', 'id');
     }

@@ -4,21 +4,12 @@ namespace App\Models;
 
 use Eloquent as Model;
 
-
-
-/**
- * Class Trip
- * @package App\Models
- * @version June 26, 2021, 2:47 pm UTC
- *
- * @property string $name
- */
 class Trip extends Model
 {
 
 
     public $table = 'trips';
-    
+
 
 
 
@@ -45,5 +36,9 @@ class Trip extends Model
         'name' => 'required'
     ];
 
-    
+    public function lines()
+    {
+        return $this->hasMany(\App\Models\Line::class);
+    }
+
 }

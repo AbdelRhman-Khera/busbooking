@@ -35,18 +35,18 @@ Route::middleware('admin', 'auth')->group(function () {
         Route::resource('trips', App\Http\Controllers\TripController::class);
 
         Route::resource('lines', App\Http\Controllers\LineController::class)->except([
-            'create', 'store', 'edit', 'update', 'destroy']);
+            'create', 'store', 'edit', 'update']);
 
         Route::resource('schedules', App\Http\Controllers\scheduleController::class);
 
         Route::resource('seats', App\Http\Controllers\SeatController::class)->except([
-            'create', 'store', 'edit', 'update', 'destroy']);
+            'create', 'store', 'edit', 'update']);
 
         Route::resource('tickets', App\Http\Controllers\TicketController::class)->except([
-            'create', 'store', 'edit', 'update', 'destroy']);
+            'create', 'store', 'edit', 'update']);
 
         Route::resource('reservations', App\Http\Controllers\ReservationController::class)->except([
-            'create', 'store', 'edit', 'update', 'destroy']);
+            'create', 'store', 'edit', 'update']);
     });
 });
 

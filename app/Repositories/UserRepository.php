@@ -54,7 +54,7 @@ class UserRepository extends BaseRepository
     }
     public function updateuser(Request $request , $id )
     {
-dd($request,$id);
+// dd($request,$id);
         $input = $request->all();
         $input['password'] =Hash::make($request['password']);
 

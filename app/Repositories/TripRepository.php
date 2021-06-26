@@ -2,8 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Models\Line;
 use App\Models\Trip;
 use App\Repositories\BaseRepository;
+use Illuminate\Http\Request;
 
 /**
  * Class TripRepository
@@ -36,5 +38,23 @@ class TripRepository extends BaseRepository
     public function model()
     {
         return Trip::class;
+    }
+
+    public function createtrip(Request $request )
+    {
+        $input = $request->all();
+        $trip=$this->create($input);
+
+        $stations = $request->stations;
+
+        for ($i=0; $i < count($stations)-1; $i++) {
+            $line = new Line();
+            $line->trip_id = $trip->id;
+            $line->start = $stations[$i];
+            $line->end = $stations[$i+1];
+            $line->save();
+        }
+        return $trip;
+
     }
 }

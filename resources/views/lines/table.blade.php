@@ -13,9 +13,9 @@
             @foreach ($lines as $line)
                 <tr>
                     <td>{{ $line->id }}</td>
-                    <td>{{ $line->start }}</td>
-                    <td>{{ $line->end }}</td>
-                    <td>{{ $line->trip_id }}</td>
+                    <td>{{ $line->starts->name }}</td>
+                    <td>{{ $line->ends->name }}</td>
+                    <td>{{ $line->trips->name}}</td>
                     <td width="120">
                         {!! Form::open(['route' => ['lines.destroy', $line->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

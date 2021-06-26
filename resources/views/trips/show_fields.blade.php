@@ -10,6 +10,15 @@
     <p>{{ $trip->name }}</p>
 </div>
 
+<!-- Lines -->
+<div class="col-sm-12">
+    {!! Form::label('lines', 'Lines:') !!}
+    @foreach ($trip->lines as $index=>$item)
+    <p>{{ $index+1 }}- From {{ $item->starts->name }} To {{ $item->ends->name }}</p>
+    @endforeach
+
+</div>
+
 <!-- Created At Field -->
 <div class="col-sm-12">
     {!! Form::label('created_at', 'Created At:') !!}
