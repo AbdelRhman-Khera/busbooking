@@ -20,12 +20,33 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::middleware('admin')->group(function () {
+Route::middleware('admin', 'auth')->group(function () {
     Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
         Route::get('/', function () {
             return redirect()->route('dashboard');
         });
+        Route::resource('roles', App\Http\Controllers\RoleController::class);
+        Route::resource('users', App\Http\Controllers\UserController::class);
+        Route::resource('stations', App\Http\Controllers\StationController::class);
+
+        Route::resource('buses', App\Http\Controllers\BusController::class);
+
+        Route::resource('trips', App\Http\Controllers\TripController::class);
+
+        Route::resource('lines', App\Http\Controllers\LineController::class)->except([
+            'create', 'store', 'edit', 'update', 'destroy']);
+
+        Route::resource('schedules', App\Http\Controllers\scheduleController::class);
+
+        Route::resource('seats', App\Http\Controllers\SeatController::class)->except([
+            'create', 'store', 'edit', 'update', 'destroy']);
+
+        Route::resource('tickets', App\Http\Controllers\TicketController::class)->except([
+            'create', 'store', 'edit', 'update', 'destroy']);
+
+        Route::resource('reservations', App\Http\Controllers\ReservationController::class)->except([
+            'create', 'store', 'edit', 'update', 'destroy']);
     });
 });
 
@@ -43,9 +64,3 @@ Route::post(
     'generator_builder/generate-from-file',
     '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
 )->name('io_generator_builder_generate_from_file');
-
-
-Route::resource('roles', App\Http\Controllers\RoleController::class);
-
-
-Route::resource('users', App\Http\Controllers\UserController::class);

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="roles-table">
+    <table class="table" id="trips-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -8,17 +8,17 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($roles as $role)
+        @foreach($trips as $trip)
             <tr>
-                <td>{{ $role->id }}</td>
-                <td>{{ $role->name }}</td>
+                <td>{{ $trip->id }}</td>
+                <td>{{ $trip->name }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['trips.destroy', $trip->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('roles.show', [$role->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('trips.show', [$trip->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('roles.edit', [$role->id]) }}" class='btn btn-default btn-xs'>
+                        <a href="{{ route('trips.edit', [$trip->id]) }}" class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
