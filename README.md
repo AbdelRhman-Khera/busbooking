@@ -12,8 +12,11 @@
 ## Admin Panel
 
 [baseUrl]/admin/dashboard
+
 credentials:
+
 email : admin@admin.com
+
 password : 12345678
 
 
@@ -30,9 +33,12 @@ change http://local/roubsta_task/bus/ to your baseUrl.
 In Admin Side:
 
 -We create predefined lines between each station and the next.
--We create predefined trips between stations, these trips contain predefined lines
+
+-We create predefined trips between stations, these trips contain predefined lines.
 For example: a trip between A and D contains lines A-B, B-C and C-D, respectively.
+
 -When creating a new scheduled trip,we select a predefined trip, bus and trip name, then the available seats for the trip are automatically created according to the number of seats on the bus with uniqe id, each seat is divided into a number of reservations based on the predefined lines between the start station and the end station.
+
 -Ticket can contain one or more reservations, depending on the lines between the starting station and the ending station entered in the ticket, and this does not appear on the user side.
 
 In API:
