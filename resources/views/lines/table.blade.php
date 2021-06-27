@@ -5,7 +5,6 @@
                 <th>ID</th>
                 <th>Start</th>
                 <th>End</th>
-                <th>Trip Id</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -15,7 +14,6 @@
                     <td>{{ $line->id }}</td>
                     <td>{{ $line->starts->name }}</td>
                     <td>{{ $line->ends->name }}</td>
-                    <td>{{ $line->trips->name}}</td>
                     <td width="120">
                         {!! Form::open(['route' => ['lines.destroy', $line->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

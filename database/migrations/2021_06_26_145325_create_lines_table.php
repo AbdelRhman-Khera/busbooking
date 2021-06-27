@@ -18,11 +18,9 @@ class CreateLinesTable extends Migration
             $table->increments('id');
             $table->integer('start')->unsigned();
             $table->integer('end')->unsigned();
-            $table->integer('trip_id')->unsigned();
             $table->timestamps();
             $table->foreign('start')->references('id')->on('stations');
             $table->foreign('end')->references('id')->on('stations');
-            $table->foreign('trip_id')->references('id')->on('trips');
         });
     }
 

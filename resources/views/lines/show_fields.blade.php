@@ -16,11 +16,7 @@
     <p>{{ $line->ends->name }}</p>
 </div>
 
-<!-- Trip Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('trip_id', 'Trip Id:') !!}
-    <p>{{ $line->trips->name }}</p>
-</div>
+
 
 <!-- Created At Field -->
 <div class="col-sm-12">

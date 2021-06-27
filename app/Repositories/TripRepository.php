@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Line;
 use App\Models\Trip;
+use App\Models\TripLines;
 use App\Repositories\BaseRepository;
 use Illuminate\Http\Request;
 
@@ -45,14 +46,13 @@ class TripRepository extends BaseRepository
         $input = $request->all();
         $trip=$this->create($input);
 
-        $stations = $request->stations;
+        $lines = $request->lines;
 
-        for ($i=0; $i < count($stations)-1; $i++) {
-            $line = new Line();
-            $line->trip_id = $trip->id;
-            $line->start = $stations[$i];
-            $line->end = $stations[$i+1];
-            $line->save();
+        foreach ($lines as $key => $line) {
+            $data = new TripLines();
+            $data->trip_id = $trip->id;
+            $data->line_id = $line;
+            $data->save();
         }
         return $trip;
 

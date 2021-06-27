@@ -6,6 +6,7 @@ use App\Http\Requests\CreateLineRequest;
 use App\Http\Requests\UpdateLineRequest;
 use App\Repositories\LineRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Station;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +43,8 @@ class LineController extends AppBaseController
      */
     public function create()
     {
-        return view('lines.create');
+        $stations = Station::all();
+        return view('lines.create',compact('stations'));
     }
 
     /**

@@ -35,7 +35,7 @@ Route::middleware('admin', 'auth')->group(function () {
         Route::resource('trips', App\Http\Controllers\TripController::class);
 
         Route::resource('lines', App\Http\Controllers\LineController::class)->except([
-            'create', 'store', 'edit', 'update']);
+             'edit', 'update']);
 
         Route::resource('schedules', App\Http\Controllers\scheduleController::class);
 
@@ -50,17 +50,3 @@ Route::middleware('admin', 'auth')->group(function () {
     });
 });
 
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
-
-Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
-
-Route::get('relation_field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@relationFieldTemplate')->name('io_relation_field_template');
-
-Route::post('generator_builder/generate', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generate')->name('io_generator_builder_generate');
-
-Route::post('generator_builder/rollback', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@rollback')->name('io_generator_builder_rollback');
-
-Route::post(
-    'generator_builder/generate-from-file',
-    '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@generateFromFile'
-)->name('io_generator_builder_generate_from_file');

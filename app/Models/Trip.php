@@ -14,7 +14,7 @@ class Trip extends Model
 
 
     public $fillable = [
-        'name'
+        'name','start','end'
     ];
 
     /**
@@ -33,12 +33,25 @@ class Trip extends Model
      * @var array
      */
     public static $rules = [
+        'start' => 'required',
+        'end' => 'required',
         'name' => 'required'
     ];
 
     public function lines()
     {
-        return $this->hasMany(\App\Models\Line::class);
+        return $this->belongsToMany(\App\Models\Line::class,'trip_lines');
+    }
+
+    public function starts()
+    {
+        return $this->belongsTo(\App\Models\Station::class, 'start', 'id');
+    }
+
+
+    public function ends()
+    {
+        return $this->belongsTo(\App\Models\Station::class, 'end', 'id');
     }
 
 }

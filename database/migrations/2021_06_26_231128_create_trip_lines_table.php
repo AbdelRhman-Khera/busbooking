@@ -4,9 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTripsTable extends Migration
+class CreateTripLinesTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,11 +13,10 @@ class CreateTripsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trips', function (Blueprint $table) {
-            $table->increments('id');
-            $table->text('name');
-            $table->integer('start');
-            $table->integer('end');
+        Schema::create('trip_lines', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('trip_id');
+            $table->foreignId('line_id');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateTripsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('trips');
+        Schema::dropIfExists('trip_lines');
     }
 }
